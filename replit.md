@@ -1,5 +1,12 @@
 # Shinda 24/7 - Rocket Crash Game
 
+## GitHub Repository
+
+- **Repo**: https://github.com/jairus-cloud/shinda247
+- **Auth**: Uses `GITHUB_PERSONAL_ACCESS_TOKEN` secret (stored in Replit secrets)
+- **Note**: GitHub was connected via Personal Access Token (not OAuth integration) — future pushes should use the same token approach via the GitHub REST API or git CLI with the token.
+
+
 ## Project
 
 A real-time rocket crash game inspired by Pakakumi/Shinda 24/7. Dark space-themed gaming interface with live multiplier updates, betting controls, player leaderboard, and game history.
