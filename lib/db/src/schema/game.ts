@@ -20,7 +20,7 @@ export const playersTable = pgTable("players", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-export const betsTable = pgTable("bets", {
+export const betsTable = pgTable("bets_v1", {
   id: serial("id").primaryKey(),
   roundId: integer("round_id").notNull().references(() => gameRoundsTable.id),
   playerId: text("player_id").notNull().references(() => playersTable.id),
@@ -33,12 +33,12 @@ export const betsTable = pgTable("bets", {
 });
 
 export const insertGameRoundSchema = createInsertSchema(gameRoundsTable).omit({ id: true });
-export const insertPlayerSchema = createInsertSchema(playersTable).omit({ createdAt: true });
-export const insertBetSchema = createInsertSchema(betsTable).omit({ id: true });
+export const insertPlayerSchema    = createInsertSchema(playersTable).omit({ createdAt: true });
+export const insertBetV1Schema     = createInsertSchema(betsTable).omit({ id: true });
 
-export type GameRound = typeof gameRoundsTable.$inferSelect;
-export type Player = typeof playersTable.$inferSelect;
-export type Bet = typeof betsTable.$inferSelect;
+export type GameRound    = typeof gameRoundsTable.$inferSelect;
+export type Player       = typeof playersTable.$inferSelect;
+export type BetV1        = typeof betsTable.$inferSelect;
 export type InsertGameRound = z.infer<typeof insertGameRoundSchema>;
-export type InsertPlayer = z.infer<typeof insertPlayerSchema>;
-export type InsertBet = z.infer<typeof insertBetSchema>;
+export type InsertPlayer    = z.infer<typeof insertPlayerSchema>;
+export type InsertBetV1     = z.infer<typeof insertBetV1Schema>;
